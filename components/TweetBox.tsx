@@ -61,18 +61,16 @@ function TweetBox({ setTweets }: Props) {
 
     await postTweet()
 
-    setTimeout(async () => {
-      toast('Tweet Posted!', {
-        id: tweetToast,
-        icon: '✨',
-      })
+    toast('Tweet Posted!', {
+      id: tweetToast,
+      icon: '✨',
+    })
 
-      setInput('')
-      setImage('')
-      setImageUrlBoxIsOpen(false)
-      const newTweets = await fetchTweets()
-      setTweets(newTweets)
-    }, 1500)
+    setInput('')
+    setImage('')
+    setImageUrlBoxIsOpen(false)
+    const newTweets = await fetchTweets()
+    setTweets(newTweets)
   }
 
   return (
