@@ -52,17 +52,21 @@ function TweetBox({ setTweets }: Props) {
     const newTweets = await fetchTweets()
     setTweets(newTweets)
 
-    toast('Tweet Posted', {
-      icon: '🚀',
-    })
-
     return json
   }
 
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleSubmit = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     e.preventDefault()
 
-    postTweet()
+    const tweetToast = toast.loading('Uploading Tweet...')
+
+    await postTweet()
+    toast('Tweet Posted!', {
+      id: tweetToast,
+      icon: '✨',
+    })
 
     setInput('')
     setImage('')

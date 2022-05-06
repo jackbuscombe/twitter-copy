@@ -68,7 +68,7 @@ function Tweet({ tweet }: Props) {
           alt=""
         />
 
-        <div>
+        <div className="flex-1">
           <div className="flex items-center space-x-1">
             <p className="mr-1 font-bold">{tweet.username}</p>
             <p className="hidden text-sm text-gray-500 sm:inline">
@@ -87,7 +87,7 @@ function Tweet({ tweet }: Props) {
             <img
               src={tweet.image}
               alt=""
-              className="m-5 ml-0 mb-1 max-h-60 rounded-lg object-cover shadow-sm"
+              className="my-5 mx-auto mb-1 max-h-60 flex-1 rounded-lg object-cover shadow-sm"
             />
           )}
         </div>
