@@ -49,9 +49,6 @@ function TweetBox({ setTweets }: Props) {
 
     const json = await result.json()
 
-    const newTweets = await fetchTweets()
-    setTweets(newTweets)
-
     return json
   }
 
@@ -63,14 +60,19 @@ function TweetBox({ setTweets }: Props) {
     const tweetToast = toast.loading('Uploading Tweet...')
 
     await postTweet()
-    toast('Tweet Posted!', {
-      id: tweetToast,
-      icon: '✨',
-    })
 
-    setInput('')
-    setImage('')
-    setImageUrlBoxIsOpen(false)
+    setTimeout(async () => {
+      toast('Tweet Posted!', {
+        id: tweetToast,
+        icon: '✨',
+      })
+
+      setInput('')
+      setImage('')
+      setImageUrlBoxIsOpen(false)
+      const newTweets = await fetchTweets()
+      setTweets(newTweets)
+    }, 1500)
   }
 
   return (
